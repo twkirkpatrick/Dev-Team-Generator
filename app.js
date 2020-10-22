@@ -50,35 +50,98 @@ function init(){
         ]).then(answers => {
             const managerObj = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNum);
             teamArray.push(managerObj);
-            buildTeam();
+            console.log("Okay!  Now that we have information for your manager, let's add the rest of the team");
+            addTeam();
         })
     }
 
-    function buildTeam(){
-        console.log("Okay!  Now that we have information for your manager, let's add the rest of the team");
+    function addTeam(){
+       
 
         inquirer.prompt([
             {
                 type: "list",
                 message: "Would you like to add an Engineer or an Intern?",
-                choices: ["Engineer", "Intern", "I don't want to add any additional team members"],
+                choices: ["Engineer", "Intern", "I am finished - build my file"],
                 name: "positionChoice"
             }
         ]).then(userPick => {
             if (userPick.positionChoice === "Engineer"){
-                //run engineer funciton here
+                initEngineer();
             } else if (userPick.positionChoice === "Intern"){
-                //run intern function here
+                initIntern();
             } else{
-                //write html function here
+                /* buildHTML(); */
             }
         })
     }
 
     function initEngineer(){
-        console.log("Cool, let's add some information for your Software Engineer!")
+        console.log("Cool, let's add some information for your Software Engineer!");
 
-        //remember to run buildteam function at end of function so the user is presented with the option of adding another team member
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is the Engineer's name?",
+                name: "engineerName"
+            },
+            {
+                type: "input",
+                message: "What is the Engineer's ID?",
+                name: "engineerId"
+            },
+            {
+                type: "input",
+                message: "What is the Engineer's email?",
+                name: "engineerEmail"
+            },
+            {
+                type: "input",
+                message: "What is the Engineer's GitHub username?",
+                name: "engineerGithub"
+            }
+        ]).then(answers =>{
+            const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+            teamArray.push(engineer);
+
+            console.log("Engineer added!");
+            addTeam();
+        })
+
+    }
+
+    function initIntern(){
+        console.log("Cool, let's add some information for your Intern!");
+
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is the Intern's name?",
+                name: "internName"
+            },
+            {
+                type: "input",
+                message: "What is the Intern's ID?",
+                name: "internId"
+            },
+            {
+                type: "input",
+                message: "What is the Intern's email?",
+                name: "internEmail"
+            },
+            {
+                type: "input",
+                message: "What school does your Intern attend?",
+                name: "internSchool"
+            }
+        ]).then(answers =>{
+            const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            teamArray.push(intern);
+
+            console.log("Intern added!");
+            addTeam();
+        })
+
     }
 }
 
