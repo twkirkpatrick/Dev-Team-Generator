@@ -1,0 +1,23 @@
+html{
+    height: 100%;
+}
+
+body{
+    height: 100vh;
+    font-family: 'Oswald', sans-serif;
+    background-image: linear-gradient(black, white);
+    background-repeat: no-repeat;
+
+}
+
+.card-header{
+    text-align: center;
+}
+
+h3 {
+    font-size: 18px !important;
+}
+
+.employee-card{
+    margin-top: 8px;
+}

@@ -51,12 +51,11 @@ function init(){
             const managerObj = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNum);
             teamArray.push(managerObj);
             console.log("Okay!  Now that we have information for your manager, let's add the rest of the team");
-            addTeam();
+            addTeamMember();
         })
     }
 
-    function addTeam(){
-       
+    function addTeamMember(){
 
         inquirer.prompt([
             {
@@ -71,7 +70,7 @@ function init(){
             } else if (userPick.positionChoice === "Intern"){
                 initIntern();
             } else{
-                /* buildHTML(); */
+                buildHTML();
             }
         })
     }
@@ -101,11 +100,11 @@ function init(){
                 name: "engineerGithub"
             }
         ]).then(answers =>{
-            const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-            teamArray.push(engineer);
+            const engineerObj = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+            teamArray.push(engineerObj);
 
             console.log("Engineer added!");
-            addTeam();
+            addTeamMember();
         })
 
     }
@@ -135,22 +134,27 @@ function init(){
                 name: "internSchool"
             }
         ]).then(answers =>{
-            const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-            teamArray.push(intern);
+            const internObj = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            teamArray.push(internObj);
 
             console.log("Intern added!");
-            addTeam();
+            addTeamMember();
         })
 
     }
+
+    function buildHTML(){
+        const templates = render(teamArray);
+
+        fs.writeFile(outputPath, templates, (err) =>{
+            if (err) throw err;
+
+            console.log("Your custom HTML Team Page has been successfully generated!");
+        })
+    }
+
+    
 }
-
-
-
-
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
@@ -161,6 +165,24 @@ function init(){
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
