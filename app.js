@@ -15,16 +15,19 @@ const teamArray = [];
 init();
 
 function init(){
-    console.log("Welcome to the Dev Team Generator!");
-    console.log("This application will help you create an HTML webpage containing information about your development team")
-    console.log("Answer the following questions to begin building your team profile");
-    console.log("--------------------------------------------------------------------");
+    console.log(
+        "\n","-".repeat(85), "\n",
+        "Welcome to the Dev Team Generator!", "\n",
+        "This application effortlessly creates a professional webpage displaying your dev team.", "\n",
+        "Answer the prompts to begin building!", "\n",
+        "-".repeat(85)
+    )
 
     initManager();
 
     function initManager(){
 
-        console.log("First, let's gather some information about your manager")
+        console.log("\n","First, let's gather some information about your manager", "\n");
         inquirer.prompt([
             {
                 type: "input",
@@ -50,7 +53,10 @@ function init(){
         ]).then(answers => {
             const managerObj = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNum);
             teamArray.push(managerObj);
-            console.log("Okay!  Now that we have information for your manager, let's add the rest of the team");
+            console.log(
+                "-".repeat(85), "\n",
+                "Okay!  Now that we have information for your manager, let's add the rest of the team", "\n"
+            );
             addTeamMember();
         })
     }
@@ -76,7 +82,7 @@ function init(){
     }
 
     function initEngineer(){
-        console.log("Cool, let's add some information for your Software Engineer!");
+        console.log("\n", "Cool, let's add some information for your Software Engineer!","\n");
 
         inquirer.prompt([
             {
@@ -103,14 +109,14 @@ function init(){
             const engineerObj = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
             teamArray.push(engineerObj);
 
-            console.log("Engineer added!");
+            console.log("\n","Engineer added!","\n");
             addTeamMember();
         })
 
     }
 
     function initIntern(){
-        console.log("Cool, let's add some information for your Intern!");
+        console.log("\n","Cool, let's add some information for your Intern!","\n");
 
         inquirer.prompt([
             {
@@ -137,7 +143,7 @@ function init(){
             const internObj = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
             teamArray.push(internObj);
 
-            console.log("Intern added!");
+            console.log("\n","Intern added!","\n");
             addTeamMember();
         })
 
@@ -146,10 +152,14 @@ function init(){
     function buildHTML(){
         const templates = render(teamArray);
 
+        if(!fs.existsSync(OUTPUT_DIR)){
+            fs.mkdirSync(OUTPUT_DIR)
+        }
+
         fs.writeFile(outputPath, templates, (err) =>{
             if (err) throw err;
 
-            console.log("Your custom HTML Team Page has been successfully generated!");
+            console.log("\n","Your custom HTML Team Page has been successfully generated!");
         })
     }
 
