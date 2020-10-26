@@ -5,8 +5,13 @@ html{
 body{
     height: 100vh;
     font-family: 'Oswald', sans-serif;
-    background-image: linear-gradient(black, white);
+    background-image: url(images/team.jpg);
     background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 
 }
 
@@ -20,4 +25,42 @@ h3 {
 
 .employee-card{
     margin-top: 8px;
+    transition: ease-in .2s;
+    background-color: seagreen !important;
+    
+
+}
+
+.team-heading{
+    padding: 1rem;
+}
+
+.employee-card:hover{
+    transform: scale(1.1);
+}
+
+.team-heading{
+    background-color: seagreen;
+    color: black;
+}
+
+.card-header{
+    background-color: seagreen;
+    color: black;
+}
+
+.card-body{
+    background-color: lightgray;
+}
+
+.list-group-item{
+    background-color: lightgray;
+    color: black;
+}
+
+
+
+a{
+    color: black;
+    text-decoration: underline;
 }

@@ -12,6 +12,8 @@ const render = require("./lib/htmlRenderer");
 const teamArray = [];
 
 
+
+
 init();
 
 function init(){
@@ -49,6 +51,8 @@ function init(){
                 message: "What is your manager's office number?",
                 name: "managerOfficeNum"
             }
+
+            
     
         ]).then(answers => {
             const managerObj = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNum);
