@@ -11,9 +11,6 @@ const render = require("./lib/htmlRenderer");
 
 const teamArray = [];
 
-
-
-
 init();
 
 function init(){
