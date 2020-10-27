@@ -1,5 +1,5 @@
 # Dev Team Generator
-This is a node CLI application that builds a professional HTML webpage which displays summaries for the members of your development team.  You are able to add as many team members as you'd like (one manager and any mix of engineers and interns).  Simply answer the provided prompts with information about your team, and you will have a polished, formatted team profile page displaying your dev team!
+This is a node CLI application that builds a professional HTML webpage displaying summaries for the members of your development team.  You are able to add as many team members as you'd like (one manager and any mix of engineers and interns).  Simply answer the provided prompts with information about your team, and you will have a polished, formatted team profile page for your dev team!
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
